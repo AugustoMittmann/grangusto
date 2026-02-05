@@ -111,11 +111,11 @@ body {
 
 #welcome {
     text-align: center;
-    padding: 40px 0;
+    padding: 0;
 }
 
 .logo {
-    margin-bottom: 32px;
+    margin-bottom: 20px;
 }
 
 .logo-img {
