@@ -191,10 +191,12 @@ body {
     letter-spacing: 1px;
 }
 
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-strong);
-    background: linear-gradient(135deg, var(--wine-light) 0%, var(--wine-accent) 100%);
+@media (hover: hover) and (pointer: fine) {
+    .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-strong);
+        background: linear-gradient(135deg, var(--wine-light) 0%, var(--wine-accent) 100%);
+    }
 }
 
 .btn-primary:active {
@@ -206,8 +208,10 @@ body {
     transition: transform 0.3s ease;
 }
 
-.btn-primary:hover .arrow {
-    transform: translateX(5px);
+@media (hover: hover) and (pointer: fine) {
+    .btn-primary:hover .arrow {
+        transform: translateX(5px);
+    }
 }
 
 /* ============================================
@@ -293,14 +297,17 @@ body {
     transition: left 0.5s ease;
 }
 
-.option-btn:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: var(--gold);
-    transform: translateX(5px);
-}
+/* Hover apenas para dispositivos com mouse */
+@media (hover: hover) and (pointer: fine) {
+    .option-btn:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: var(--gold);
+        transform: translateX(5px);
+    }
 
-.option-btn:hover::before {
-    left: 100%;
+    .option-btn:hover::before {
+        left: 100%;
+    }
 }
 
 .option-btn.selected {
@@ -338,17 +345,19 @@ body {
     transition: var(--transition-smooth);
 }
 
-.btn-back:hover {
-    color: var(--text-light);
+@media (hover: hover) and (pointer: fine) {
+    .btn-back:hover {
+        color: var(--text-light);
+    }
+
+    .btn-back:hover .back-arrow {
+        transform: translateX(-5px);
+    }
 }
 
 .btn-back .back-arrow {
     font-size: 1.25rem;
     transition: transform 0.3s ease;
-}
-
-.btn-back:hover .back-arrow {
-    transform: translateX(-5px);
 }
 
 /* ============================================
@@ -466,9 +475,11 @@ body {
     box-shadow: var(--shadow-soft);
 }
 
-.btn-whatsapp:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-strong);
+@media (hover: hover) and (pointer: fine) {
+    .btn-whatsapp:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-strong);
+    }
 }
 
 .btn-whatsapp:active {
@@ -497,18 +508,20 @@ body {
     transition: var(--transition-smooth);
 }
 
-.btn-restart:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--text-light);
+@media (hover: hover) and (pointer: fine) {
+    .btn-restart:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--text-light);
+    }
+
+    .btn-restart:hover .restart-icon {
+        transform: rotate(-180deg);
+    }
 }
 
 .restart-icon {
     font-size: 1.25rem;
     transition: transform 0.3s ease;
-}
-
-.btn-restart:hover .restart-icon {
-    transform: rotate(-180deg);
 }
 
 /* ============================================
