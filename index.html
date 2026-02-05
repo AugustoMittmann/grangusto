@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empório GranGusto - Atendimento Digital</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Tela de Boas-vindas -->
+        <section id="welcome" class="screen active">
+            <div class="logo">
+                <img src="imagens/grangusto.jpg" alt="Empório GranGusto" class="logo-img">
+                <h1>Empório GranGusto</h1>
+            </div>
+            <p class="subtitle">Descubra o vinho perfeito para você</p>
+            <p class="description">Responda algumas perguntas rápidas e nossos sommeliers virtuais encontrarão a recomendação ideal para o seu momento especial.</p>
+            <button class="btn-primary start-btn">
+                Começar
+                <span class="arrow">→</span>
+            </button>
+        </section>
+
+        <!-- Pergunta 1 - Faixa de Preço -->
+        <section id="question-1" class="screen question-screen">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 20%"></div>
+                </div>
+                <span class="progress-text">1 de 5</span>
+            </div>
+            <h2 class="question-title">Qual a sua faixa de preço?</h2>
+            <div class="options-grid">
+                <button class="option-btn" data-question="preco" data-value="ate50">Até R$50</button>
+                <button class="option-btn" data-question="preco" data-value="50-100">R$50 – R$100</button>
+                <button class="option-btn" data-question="preco" data-value="100-200">R$100 – R$200</button>
+                <button class="option-btn" data-question="preco" data-value="acima200">Acima de R$200</button>
+            </div>
+            <button class="btn-back">
+                <span class="back-arrow">←</span> Voltar
+            </button>
+        </section>
+
+        <!-- Pergunta 2 - Ocasião -->
+        <section id="question-2" class="screen question-screen">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 40%"></div>
+                </div>
+                <span class="progress-text">2 de 5</span>
+            </div>
+            <h2 class="question-title">Qual a ocasião?</h2>
+            <div class="options-grid">
+                <button class="option-btn" data-question="ocasiao" data-value="romantico">Jantar romântico</button>
+                <button class="option-btn" data-question="ocasiao" data-value="presente">Presente</button>
+                <button class="option-btn" data-question="ocasiao" data-value="festa">Evento/festa</button>
+                <button class="option-btn" data-question="ocasiao" data-value="churrasco">Churrasco</button>
+                <button class="option-btn" data-question="ocasiao" data-value="relaxar">Para relaxar sozinho</button>
+            </div>
+            <button class="btn-back">
+                <span class="back-arrow">←</span> Voltar
+            </button>
+        </section>
+
+        <!-- Pergunta 3 - Corpo do Vinho -->
+        <section id="question-3" class="screen question-screen">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%"></div>
+                </div>
+                <span class="progress-text">3 de 5</span>
+            </div>
+            <h2 class="question-title">Qual corpo de vinho você prefere?</h2>
+            <div class="options-grid">
+                <button class="option-btn" data-question="corpo" data-value="leve">Leve</button>
+                <button class="option-btn" data-question="corpo" data-value="medio">Médio</button>
+                <button class="option-btn" data-question="corpo" data-value="encorpado">Encorpado</button>
+            </div>
+            <button class="btn-back">
+                <span class="back-arrow">←</span> Voltar
+            </button>
+        </section>
+
+        <!-- Pergunta 4 - Tipo -->
+        <section id="question-4" class="screen question-screen">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 80%"></div>
+                </div>
+                <span class="progress-text">4 de 5</span>
+            </div>
+            <h2 class="question-title">Qual tipo de vinho?</h2>
+            <div class="options-grid">
+                <button class="option-btn" data-question="tipo" data-value="tinto">Tinto</button>
+                <button class="option-btn" data-question="tipo" data-value="branco">Branco</button>
+                <button class="option-btn" data-question="tipo" data-value="rose">Rosé</button>
+                <button class="option-btn" data-question="tipo" data-value="espumante">Espumante</button>
+            </div>
+            <button class="btn-back">
+                <span class="back-arrow">←</span> Voltar
+            </button>
+        </section>
+
+        <!-- Pergunta 5 - Perfil de Sabor -->
+        <section id="question-5" class="screen question-screen">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%"></div>
+                </div>
+                <span class="progress-text">5 de 5</span>
+            </div>
+            <h2 class="question-title">Qual perfil de sabor você prefere?</h2>
+            <div class="options-grid">
+                <button class="option-btn" data-question="sabor" data-value="seco">Mais seco</button>
+                <button class="option-btn" data-question="sabor" data-value="frutado">Mais frutado</button>
+                <button class="option-btn" data-question="sabor" data-value="equilibrado">Equilibrado</button>
+            </div>
+            <button class="btn-back">
+                <span class="back-arrow">←</span> Voltar
+            </button>
+        </section>
+
+        <!-- Tela de Resultado -->
+        <section id="result" class="screen">
+            <div class="result-container">
+                <div class="result-header">
+                    <img src="imagens/grangusto.jpg" alt="GranGusto" class="result-logo">
+                    <h2>Vinhos ideais para você</h2>
+                </div>
+                
+                <!-- Vinho 1 -->
+                <div class="wine-option">
+                    <h3 id="wine-name-1" class="wine-name">Carregando...</h3>
+                    <div class="video-container">
+                        <video id="wine-video-1" controls playsinline>
+                            <source src="" type="video/mp4">
+                            Seu navegador não suporta vídeos.
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Vinho 2 -->
+                <div class="wine-option">
+                    <h3 id="wine-name-2" class="wine-name">Carregando...</h3>
+                    <div class="video-container">
+                        <video id="wine-video-2" controls playsinline>
+                            <source src="" type="video/mp4">
+                            Seu navegador não suporta vídeos.
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Vinho 3 -->
+                <div class="wine-option">
+                    <h3 id="wine-name-3" class="wine-name">Carregando...</h3>
+                    <div class="video-container">
+                        <video id="wine-video-3" controls playsinline>
+                            <source src="" type="video/mp4">
+                            Seu navegador não suporta vídeos.
+                        </video>
+                    </div>
+                </div>
+                
+                <div class="result-actions">
+                    <a id="whatsapp-btn" class="btn-whatsapp" href="https://wa.me/5551992975072" target="_blank" rel="noopener noreferrer">
+                        <span class="whatsapp-icon">📱</span>
+                        Comprar Agora pelo WhatsApp
+                    </a>
+                    <button class="btn-restart">
+                        <span class="restart-icon">↻</span>
+                        Refazer questionário
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

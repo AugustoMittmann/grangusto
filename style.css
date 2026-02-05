@@ -1,0 +1,681 @@
+/* ============================================
+   EMPÓRIO GRANGUSTO - ATENDIMENTO DIGITAL
+   Design Premium com tema de vinho
+   Mobile First / Responsivo
+   ============================================ */
+
+/* Variáveis de cores - Paleta GranGusto */
+:root {
+    --wine-dark: #3d1a1a;
+    --wine-primary: #5c2a2a;
+    --wine-light: #7a3d3d;
+    --wine-accent: #964545;
+    --gold: #c9a85c;
+    --gold-light: #dcc99d;
+    --cream: #f8f4ec;
+    --dark-bg: #1f1212;
+    --dark-surface: #2a1919;
+    --text-light: #ffffff;
+    --text-cream: #f5f0e8;
+    --text-muted: rgba(255, 255, 255, 0.75);
+    --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.25);
+    --shadow-strong: 0 8px 48px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 30px rgba(201, 168, 92, 0.15);
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --border-radius: 16px;
+    --border-radius-sm: 12px;
+}
+
+/* Reset e Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(180deg, var(--dark-bg) 0%, var(--wine-dark) 100%);
+    min-height: 100vh;
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Container Principal */
+.container {
+    width: 100%;
+    min-height: 100vh;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 24px 20px;
+    position: relative;
+}
+
+/* Telas */
+.screen {
+    display: none;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: var(--transition-smooth);
+    min-height: calc(100vh - 48px);
+    flex-direction: column;
+    justify-content: center;
+}
+
+.screen.active {
+    display: flex;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Animação de entrada */
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeSlideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+}
+
+.screen.slide-in {
+    animation: fadeSlideIn 0.4s ease forwards;
+}
+
+.screen.slide-out {
+    animation: fadeSlideOut 0.3s ease forwards;
+}
+
+/* ============================================
+   TELA DE BOAS-VINDAS
+   ============================================ */
+
+#welcome {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.logo {
+    margin-bottom: 32px;
+}
+
+.logo-img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    border-radius: 50%;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), var(--shadow-glow);
+    animation: float 3s ease-in-out infinite;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+    padding: 12px;
+    border: 3px solid rgba(201, 168, 92, 0.4);
+}
+
+.wine-icon {
+    font-size: 64px;
+    display: block;
+    margin-bottom: 16px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.logo h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-light);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--text-light) 0%, var(--gold-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: var(--gold);
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+.description {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 48px;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+}
+
+/* Botão Principal */
+.btn-primary {
+    background: linear-gradient(135deg, var(--wine-primary) 0%, var(--wine-light) 100%);
+    color: var(--text-light);
+    border: none;
+    padding: 18px 48px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-strong);
+    background: linear-gradient(135deg, var(--wine-light) 0%, var(--wine-accent) 100%);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+.btn-primary .arrow {
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-primary:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* ============================================
+   TELAS DE PERGUNTAS
+   ============================================ */
+
+.question-screen {
+    padding: 20px 0;
+}
+
+/* Barra de Progresso */
+.progress-container {
+    margin-bottom: 40px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    display: block;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Título da Pergunta */
+.question-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 32px;
+    color: var(--text-light);
+    line-height: 1.4;
+}
+
+/* Grid de Opções */
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 32px;
+}
+
+/* Botões de Opção */
+.option-btn {
+    width: 100%;
+    padding: 20px 24px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--border-radius);
+    color: var(--text-light);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.option-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.option-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--gold);
+    transform: translateX(5px);
+}
+
+.option-btn:hover::before {
+    left: 100%;
+}
+
+.option-btn.selected {
+    background: linear-gradient(135deg, var(--wine-primary) 0%, var(--wine-light) 100%);
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.option-btn.selected::after {
+    content: '✓';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.25rem;
+    color: var(--gold);
+}
+
+.option-btn:active {
+    transform: scale(0.98);
+}
+
+/* Botão Voltar */
+.btn-back {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto;
+    transition: var(--transition-smooth);
+}
+
+.btn-back:hover {
+    color: var(--text-light);
+}
+
+.btn-back .back-arrow {
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-back:hover .back-arrow {
+    transform: translateX(-5px);
+}
+
+/* ============================================
+   TELA DE RESULTADO
+   ============================================ */
+
+#result {
+    padding: 20px 0;
+}
+
+.result-container {
+    text-align: center;
+}
+
+.result-header {
+    margin-bottom: 24px;
+}
+
+.result-icon {
+    font-size: 56px;
+    display: block;
+    margin-bottom: 16px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.result-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), var(--shadow-glow);
+    animation: pulse 2s ease-in-out infinite;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+    padding: 10px;
+    border: 2px solid rgba(201, 168, 92, 0.4);
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.result-header h2 {
+    font-size: 1.25rem;
+    color: var(--gold);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+}
+
+/* Wine Option Container */
+.wine-option {
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.wine-option:last-of-type {
+    border-bottom: none;
+    margin-bottom: 32px;
+}
+
+/* Nome do Vinho */
+.wine-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.3;
+    padding: 0 10px;
+}
+
+/* Container do Vídeo */
+.video-container {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-strong);
+    background: var(--dark-surface);
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 280px;
+    object-fit: cover;
+}
+
+/* Ações do Resultado */
+.result-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Botão WhatsApp */
+.btn-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    text-decoration: none;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-whatsapp:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-strong);
+}
+
+.btn-whatsapp:active {
+    transform: translateY(-1px);
+}
+
+.whatsapp-icon {
+    font-size: 1.5rem;
+}
+
+/* Botão Refazer */
+.btn-restart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px 24px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.btn-restart:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--text-light);
+}
+
+.restart-icon {
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-restart:hover .restart-icon {
+    transform: rotate(-180deg);
+}
+
+/* ============================================
+   VALIDAÇÃO / FEEDBACK
+   ============================================ */
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* ============================================
+   RESPONSIVIDADE - DESKTOP
+   ============================================ */
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 600px;
+        padding: 40px 32px;
+    }
+
+    .logo h1 {
+        font-size: 2.5rem;
+    }
+
+    .wine-icon {
+        font-size: 80px;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+    }
+
+    .description {
+        font-size: 1.125rem;
+        max-width: 450px;
+    }
+
+    .btn-primary {
+        padding: 20px 56px;
+        font-size: 1.25rem;
+    }
+
+    .question-title {
+        font-size: 1.75rem;
+        margin-bottom: 40px;
+    }
+
+    .options-grid {
+        gap: 16px;
+    }
+
+    .option-btn {
+        padding: 22px 28px;
+        font-size: 1.125rem;
+    }
+
+    .wine-name {
+        font-size: 2rem;
+    }
+
+    .video-container video {
+        max-height: 340px;
+    }
+
+    .btn-whatsapp,
+    .btn-restart {
+        font-size: 1.125rem;
+        padding: 20px 28px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 700px;
+        padding: 48px 40px;
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 24px;
+        min-height: auto;
+        margin: 40px auto;
+    }
+
+    .screen {
+        min-height: auto;
+        padding: 20px 0;
+    }
+
+    #welcome {
+        padding: 60px 0;
+    }
+
+    .question-screen {
+        padding: 40px 0;
+    }
+
+    #result {
+        padding: 40px 0;
+    }
+
+    .options-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    /* Opção ímpar (última) fica centralizada */
+    .options-grid .option-btn:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: 50%;
+        margin: 0 auto;
+    }
+}
+
+/* ============================================
+   ACESSIBILIDADE
+   ============================================ */
+
+.option-btn:focus,
+.btn-primary:focus,
+.btn-back:focus,
+.btn-whatsapp:focus,
+.btn-restart:focus {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+}
+
+/* Reduz movimento para usuários que preferem */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ============================================
+   ESTADOS ESPECIAIS
+   ============================================ */
+
+/* Loading state */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Smooth scroll para iOS */
+.container {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Fix para Safari video */
+video::-webkit-media-controls-panel {
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+}
